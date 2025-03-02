@@ -1,0 +1,153 @@
+make: Entering directory '/home/aks91/repo/korifi'
+make: 'bin/yq' is up to date.
+make: Leaving directory '/home/aks91/repo/korifi'
+None of $DOCKER_SERVER $DOCKER_USERNAME $DOCKER_PASSWORD $REPOSITORY_PREFIX $KPACK_BUILDER_REPOSITORY are set. Assuming local registry.
+"twuni" has been added to your repositories
+Release "localregistry" does not exist. Installing it now.
+NAME: localregistry
+LAST DEPLOYED: Sun Mar  2 21:26:42 2025
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+1. Get the application URL by running these commands:
+  export NODE_PORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].nodePort}" services localregistry-docker-registry)
+  export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath="{.items[0].status.addresses[0].address}")
+  echo http://$NODE_IP:$NODE_PORT
+**************************
+ Creating 'cf-admin' user
+**************************
+certificatesigningrequest.certificates.k8s.io/25a1536067c8b32469434db193159930bfa78c97 created
+certificatesigningrequest.certificates.k8s.io/25a1536067c8b32469434db193159930bfa78c97 approved
+certificatesigningrequest.certificates.k8s.io/25a1536067c8b32469434db193159930bfa78c97 condition met
+certificatesigningrequest.certificates.k8s.io "25a1536067c8b32469434db193159930bfa78c97" deleted
+User "cf-admin" set.
+
+Use "cf set-space-role cf-admin ORG SPACE SpaceDeveloper" to grant this user permissions in a space.
+*************************
+ Installing Cert Manager
+*************************
+customresourcedefinition.apiextensions.k8s.io/certificaterequests.cert-manager.io created
+customresourcedefinition.apiextensions.k8s.io/certificates.cert-manager.io created
+customresourcedefinition.apiextensions.k8s.io/clusterissuers.cert-manager.io created
+customresourcedefinition.apiextensions.k8s.io/issuers.cert-manager.io created
+customresourcedefinition.apiextensions.k8s.io/orders.acme.cert-manager.io created
+namespace/cert-manager created
+customresourcedefinition.apiextensions.k8s.io/certificaterequests.cert-manager.io unchanged
+customresourcedefinition.apiextensions.k8s.io/certificates.cert-manager.io unchanged
+customresourcedefinition.apiextensions.k8s.io/challenges.acme.cert-manager.io created
+customresourcedefinition.apiextensions.k8s.io/clusterissuers.cert-manager.io unchanged
+customresourcedefinition.apiextensions.k8s.io/issuers.cert-manager.io unchanged
+customresourcedefinition.apiextensions.k8s.io/orders.acme.cert-manager.io unchanged
+serviceaccount/cert-manager-cainjector created
+serviceaccount/cert-manager created
+serviceaccount/cert-manager-webhook created
+clusterrole.rbac.authorization.k8s.io/cert-manager-cainjector created
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-issuers created
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-clusterissuers created
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-certificates created
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-orders created
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-challenges created
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-ingress-shim created
+clusterrole.rbac.authorization.k8s.io/cert-manager-cluster-view created
+clusterrole.rbac.authorization.k8s.io/cert-manager-view created
+clusterrole.rbac.authorization.k8s.io/cert-manager-edit created
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-approve:cert-manager-io created
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-certificatesigningrequests created
+clusterrole.rbac.authorization.k8s.io/cert-manager-webhook:subjectaccessreviews created
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-cainjector created
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-issuers created
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-clusterissuers created
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-certificates created
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-orders created
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-challenges created
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-ingress-shim created
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-approve:cert-manager-io created
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-certificatesigningrequests created
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-webhook:subjectaccessreviews created
+role.rbac.authorization.k8s.io/cert-manager-cainjector:leaderelection created
+role.rbac.authorization.k8s.io/cert-manager:leaderelection created
+role.rbac.authorization.k8s.io/cert-manager-tokenrequest created
+role.rbac.authorization.k8s.io/cert-manager-webhook:dynamic-serving created
+rolebinding.rbac.authorization.k8s.io/cert-manager-cainjector:leaderelection created
+rolebinding.rbac.authorization.k8s.io/cert-manager:leaderelection created
+rolebinding.rbac.authorization.k8s.io/cert-manager-cert-manager-tokenrequest created
+rolebinding.rbac.authorization.k8s.io/cert-manager-webhook:dynamic-serving created
+service/cert-manager-cainjector created
+service/cert-manager created
+service/cert-manager-webhook created
+deployment.apps/cert-manager-cainjector created
+deployment.apps/cert-manager created
+deployment.apps/cert-manager-webhook created
+mutatingwebhookconfiguration.admissionregistration.k8s.io/cert-manager-webhook created
+validatingwebhookconfiguration.admissionregistration.k8s.io/cert-manager-webhook created
+
+
+aks91@aks91:~/repo/korifi$ ./scripts/deploy-on-kind.sh kind > deploy-on-kind.log
+./scripts/deploy-on-kind.sh: line 14: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+Creating cluster "kind" ...
+ ✓ Ensuring node image (kindest/node:v1.32.2) 🖼
+ ✓ Preparing nodes 📦  
+ ✓ Writing configuration 📜 
+ ✓ Starting control-plane 🕹️ 
+ ✓ Installing CNI 🔌 
+ ✓ Installing StorageClass 💾 
+ ✓ Waiting ≤ 5m0s for control-plane = Ready ⏳ 
+ • Ready after 16s 💚
+Set kubectl context to "kind-kind"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-kind
+
+Have a question, bug, or feature request? Let us know! https://kind.sigs.k8s.io/#community 🙂
+Set kubectl context to "kind-kind"
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+        LANGUAGE = (unset),
+        LC_ALL = "en_US.UTF-8",
+        LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to a fallback locale ("C.UTF-8").
+Error from server: error when retrieving current configuration of:
+Resource: "apiextensions.k8s.io/v1, Resource=customresourcedefinitions", GroupVersionKind: "apiextensions.k8s.io/v1, Kind=CustomResourceDefinition"
+Name: "challenges.acme.cert-manager.io", Namespace: ""
+from server for: "/home/aks91/repo/korifi/tests/vendor/cert-manager/cert-manager.crds.yaml": etcdserver: request timed out
+aks91@aks91:~/repo/korifi$ kubectl cluster-info --context kind-kind > kubectl-cluster-info-context-kind-kind.log
+aks91@aks91:~/repo/korifi$ kubectl cluster-info dump  >> kubectl-cluster-info-context-kind-kind.log
+
+aks91@aks91:~/repo/korifi$ kubectl get pods --all-namespaces > kubectl-get-pods-all-namespaces.log
+NAMESPACE            NAME                                             READY   STATUS    RESTARTS      AGE
+cert-manager         cert-manager-7b5cdf866f-wr4sn                    1/1     Running   0             16m
+cert-manager         cert-manager-cainjector-7c9788477c-5h7h8         1/1     Running   0             16m
+cert-manager         cert-manager-webhook-764949f558-v4k4q            1/1     Running   0             16m
+default              localregistry-docker-registry-5d8cd78469-5lczf   1/1     Running   0             17m
+kube-system          coredns-668d6bf9bc-5pb4d                         1/1     Running   0             17m
+kube-system          coredns-668d6bf9bc-sgzg9                         1/1     Running   0             17m
+kube-system          etcd-kind-control-plane                          1/1     Running   0             17m
+kube-system          kindnet-r5fph                                    1/1     Running   0             17m
+kube-system          kube-apiserver-kind-control-plane                1/1     Running   0             17m
+kube-system          kube-controller-manager-kind-control-plane       1/1     Running   1 (16m ago)   17m
+kube-system          kube-proxy-r79tk                                 1/1     Running   0             17m
+kube-system          kube-scheduler-kind-control-plane                1/1     Running   1 (16m ago)   17m
+local-path-storage   local-path-provisioner-7dc846544d-pj47f          1/1     Running   0             17m
+
+aks91@aks91:~/repo/korifi$ kubectl get pods --all-namespaces -o wide > kubectl-get-pods-all-namespaces-o-wide.log
+NAMESPACE            NAME                                             READY   STATUS    RESTARTS      AGE   IP           NODE                 NOMINATED NODE   READINESS GATES
+cert-manager         cert-manager-7b5cdf866f-wr4sn                    1/1     Running   0             16m   10.244.0.6   kind-control-plane   <none>           <none>
+cert-manager         cert-manager-cainjector-7c9788477c-5h7h8         1/1     Running   0             16m   10.244.0.7   kind-control-plane   <none>           <none>
+cert-manager         cert-manager-webhook-764949f558-v4k4q            1/1     Running   0             16m   10.244.0.8   kind-control-plane   <none>           <none>
+default              localregistry-docker-registry-5d8cd78469-5lczf   1/1     Running   0             17m   10.244.0.9   kind-control-plane   <none>           <none>
+kube-system          coredns-668d6bf9bc-5pb4d                         1/1     Running   0             18m   10.244.0.2   kind-control-plane   <none>           <none>
+kube-system          coredns-668d6bf9bc-sgzg9                         1/1     Running   0             18m   10.244.0.4   kind-control-plane   <none>           <none>
+kube-system          etcd-kind-control-plane                          1/1     Running   0             18m   172.19.0.7   kind-control-plane   <none>           <none>
+kube-system          kindnet-r5fph                                    1/1     Running   0             18m   172.19.0.7   kind-control-plane   <none>           <none>
+kube-system          kube-apiserver-kind-control-plane                1/1     Running   0             18m   172.19.0.7   kind-control-plane   <none>           <none>
+kube-system          kube-controller-manager-kind-control-plane       1/1     Running   1 (17m ago)   18m   172.19.0.7   kind-control-plane   <none>           <none>
+kube-system          kube-proxy-r79tk                                 1/1     Running   0             18m   172.19.0.7   kind-control-plane   <none>           <none>
+kube-system          kube-scheduler-kind-control-plane                1/1     Running   1 (17m ago)   18m   172.19.0.7   kind-control-plane   <none>           <none>
+local-path-storage   local-path-provisioner-7dc846544d-pj47f          1/1     Running   0             18m   10.244.0.3   kind-control-plane   <none>           <none>
+

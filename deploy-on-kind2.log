@@ -1,0 +1,251 @@
+make: Entering directory '/home/aks91/repo/korifi'
+make: 'bin/yq' is up to date.
+make: Leaving directory '/home/aks91/repo/korifi'
+None of $DOCKER_SERVER $DOCKER_USERNAME $DOCKER_PASSWORD $REPOSITORY_PREFIX $KPACK_BUILDER_REPOSITORY are set. Assuming local registry.
+"twuni" already exists with the same configuration, skipping
+Release "localregistry" has been upgraded. Happy Helming!
+NAME: localregistry
+LAST DEPLOYED: Sun Mar  2 21:50:39 2025
+NAMESPACE: default
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
+NOTES:
+1. Get the application URL by running these commands:
+  export NODE_PORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].nodePort}" services localregistry-docker-registry)
+  export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath="{.items[0].status.addresses[0].address}")
+  echo http://$NODE_IP:$NODE_PORT
+**************************
+ Creating 'cf-admin' user
+**************************
+certificatesigningrequest.certificates.k8s.io/593c046298d70f458e4c03fd289df37ad563eabd created
+certificatesigningrequest.certificates.k8s.io/593c046298d70f458e4c03fd289df37ad563eabd approved
+certificatesigningrequest.certificates.k8s.io/593c046298d70f458e4c03fd289df37ad563eabd condition met
+certificatesigningrequest.certificates.k8s.io "593c046298d70f458e4c03fd289df37ad563eabd" deleted
+User "cf-admin" set.
+
+Use "cf set-space-role cf-admin ORG SPACE SpaceDeveloper" to grant this user permissions in a space.
+*************************
+ Installing Cert Manager
+*************************
+customresourcedefinition.apiextensions.k8s.io/certificaterequests.cert-manager.io unchanged
+customresourcedefinition.apiextensions.k8s.io/certificates.cert-manager.io unchanged
+customresourcedefinition.apiextensions.k8s.io/challenges.acme.cert-manager.io unchanged
+customresourcedefinition.apiextensions.k8s.io/clusterissuers.cert-manager.io unchanged
+customresourcedefinition.apiextensions.k8s.io/issuers.cert-manager.io unchanged
+customresourcedefinition.apiextensions.k8s.io/orders.acme.cert-manager.io unchanged
+namespace/cert-manager unchanged
+customresourcedefinition.apiextensions.k8s.io/certificaterequests.cert-manager.io unchanged
+customresourcedefinition.apiextensions.k8s.io/certificates.cert-manager.io unchanged
+customresourcedefinition.apiextensions.k8s.io/challenges.acme.cert-manager.io unchanged
+customresourcedefinition.apiextensions.k8s.io/clusterissuers.cert-manager.io unchanged
+customresourcedefinition.apiextensions.k8s.io/issuers.cert-manager.io unchanged
+customresourcedefinition.apiextensions.k8s.io/orders.acme.cert-manager.io unchanged
+serviceaccount/cert-manager-cainjector unchanged
+serviceaccount/cert-manager unchanged
+serviceaccount/cert-manager-webhook unchanged
+clusterrole.rbac.authorization.k8s.io/cert-manager-cainjector unchanged
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-issuers unchanged
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-clusterissuers unchanged
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-certificates unchanged
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-orders unchanged
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-challenges unchanged
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-ingress-shim unchanged
+clusterrole.rbac.authorization.k8s.io/cert-manager-cluster-view unchanged
+clusterrole.rbac.authorization.k8s.io/cert-manager-view unchanged
+clusterrole.rbac.authorization.k8s.io/cert-manager-edit unchanged
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-approve:cert-manager-io unchanged
+clusterrole.rbac.authorization.k8s.io/cert-manager-controller-certificatesigningrequests unchanged
+clusterrole.rbac.authorization.k8s.io/cert-manager-webhook:subjectaccessreviews unchanged
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-cainjector unchanged
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-issuers unchanged
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-clusterissuers unchanged
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-certificates unchanged
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-orders unchanged
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-challenges unchanged
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-ingress-shim unchanged
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-approve:cert-manager-io unchanged
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-controller-certificatesigningrequests unchanged
+clusterrolebinding.rbac.authorization.k8s.io/cert-manager-webhook:subjectaccessreviews unchanged
+role.rbac.authorization.k8s.io/cert-manager-cainjector:leaderelection unchanged
+role.rbac.authorization.k8s.io/cert-manager:leaderelection unchanged
+role.rbac.authorization.k8s.io/cert-manager-tokenrequest unchanged
+role.rbac.authorization.k8s.io/cert-manager-webhook:dynamic-serving unchanged
+rolebinding.rbac.authorization.k8s.io/cert-manager-cainjector:leaderelection unchanged
+rolebinding.rbac.authorization.k8s.io/cert-manager:leaderelection unchanged
+rolebinding.rbac.authorization.k8s.io/cert-manager-cert-manager-tokenrequest unchanged
+rolebinding.rbac.authorization.k8s.io/cert-manager-webhook:dynamic-serving unchanged
+service/cert-manager-cainjector unchanged
+service/cert-manager unchanged
+service/cert-manager-webhook unchanged
+deployment.apps/cert-manager-cainjector unchanged
+deployment.apps/cert-manager unchanged
+deployment.apps/cert-manager-webhook unchanged
+mutatingwebhookconfiguration.admissionregistration.k8s.io/cert-manager-webhook configured
+validatingwebhookconfiguration.admissionregistration.k8s.io/cert-manager-webhook configured
+deployment "cert-manager" successfully rolled out
+deployment "cert-manager-webhook" successfully rolled out
+deployment "cert-manager-cainjector" successfully rolled out
+******************
+ Installing Kpack
+******************
+namespace/kpack created
+customresourcedefinition.apiextensions.k8s.io/builds.kpack.io created
+customresourcedefinition.apiextensions.k8s.io/builders.kpack.io created
+customresourcedefinition.apiextensions.k8s.io/buildpacks.kpack.io created
+customresourcedefinition.apiextensions.k8s.io/clusterbuilders.kpack.io created
+customresourcedefinition.apiextensions.k8s.io/clusterbuildpacks.kpack.io created
+customresourcedefinition.apiextensions.k8s.io/clusterstacks.kpack.io created
+customresourcedefinition.apiextensions.k8s.io/clusterstores.kpack.io created
+configmap/config-logging created
+configmap/build-init-image created
+configmap/build-init-windows-image created
+configmap/build-waiter-image created
+configmap/rebase-image created
+configmap/lifecycle-image created
+configmap/completion-image created
+configmap/completion-windows-image created
+deployment.apps/kpack-controller created
+serviceaccount/controller created
+clusterrole.rbac.authorization.k8s.io/kpack-controller-admin created
+clusterrolebinding.rbac.authorization.k8s.io/kpack-controller-admin-binding created
+clusterrole.rbac.authorization.k8s.io/kpack-controller-servicebindings-cluster-role created
+clusterrolebinding.rbac.authorization.k8s.io/kpack-controller-servicebindings-binding created
+role.rbac.authorization.k8s.io/kpack-controller-local-config created
+rolebinding.rbac.authorization.k8s.io/kpack-controller-local-config-binding created
+customresourcedefinition.apiextensions.k8s.io/images.kpack.io created
+priorityclass.scheduling.k8s.io/kpack-control-plane created
+priorityclass.scheduling.k8s.io/kpack-build-high-priority created
+priorityclass.scheduling.k8s.io/kpack-build-low-priority created
+service/kpack-webhook created
+customresourcedefinition.apiextensions.k8s.io/sourceresolvers.kpack.io created
+mutatingwebhookconfiguration.admissionregistration.k8s.io/defaults.webhook.kpack.io created
+validatingwebhookconfiguration.admissionregistration.k8s.io/validation.webhook.kpack.io created
+secret/webhook-certs created
+deployment.apps/kpack-webhook created
+serviceaccount/webhook created
+role.rbac.authorization.k8s.io/kpack-webhook-certs-admin created
+rolebinding.rbac.authorization.k8s.io/kpack-webhook-certs-admin-binding created
+clusterrole.rbac.authorization.k8s.io/kpack-webhook-mutatingwebhookconfiguration-admin created
+clusterrolebinding.rbac.authorization.k8s.io/kpack-webhook-certs-mutatingwebhookconfiguration-admin-binding created
+deployment.apps/kpack-controller patched
+********************
+ Installing Contour
+********************
+customresourcedefinition.apiextensions.k8s.io/contourconfigurations.projectcontour.io created
+customresourcedefinition.apiextensions.k8s.io/contourdeployments.projectcontour.io created
+customresourcedefinition.apiextensions.k8s.io/extensionservices.projectcontour.io created
+customresourcedefinition.apiextensions.k8s.io/httpproxies.projectcontour.io created
+customresourcedefinition.apiextensions.k8s.io/tlscertificatedelegations.projectcontour.io created
+customresourcedefinition.apiextensions.k8s.io/backendlbpolicies.gateway.networking.k8s.io created
+customresourcedefinition.apiextensions.k8s.io/backendtlspolicies.gateway.networking.k8s.io created
+customresourcedefinition.apiextensions.k8s.io/gatewayclasses.gateway.networking.k8s.io created
+customresourcedefinition.apiextensions.k8s.io/gateways.gateway.networking.k8s.io created
+customresourcedefinition.apiextensions.k8s.io/grpcroutes.gateway.networking.k8s.io created
+customresourcedefinition.apiextensions.k8s.io/httproutes.gateway.networking.k8s.io created
+customresourcedefinition.apiextensions.k8s.io/referencegrants.gateway.networking.k8s.io created
+customresourcedefinition.apiextensions.k8s.io/tcproutes.gateway.networking.k8s.io created
+customresourcedefinition.apiextensions.k8s.io/tlsroutes.gateway.networking.k8s.io created
+customresourcedefinition.apiextensions.k8s.io/udproutes.gateway.networking.k8s.io created
+namespace/projectcontour created
+serviceaccount/contour-gateway-provisioner created
+clusterrole.rbac.authorization.k8s.io/contour-gateway-provisioner created
+role.rbac.authorization.k8s.io/contour-gateway-provisioner created
+rolebinding.rbac.authorization.k8s.io/contour-gateway-provisioner-leader-election created
+clusterrolebinding.rbac.authorization.k8s.io/contour-gateway-provisioner created
+deployment.apps/contour-gateway-provisioner created
+gatewayclass.gateway.networking.k8s.io/contour created
+************************************************
+ Installing Metrics Server Insecure TLS options
+************************************************
+serviceaccount/metrics-server created
+clusterrole.rbac.authorization.k8s.io/system:aggregated-metrics-reader created
+clusterrole.rbac.authorization.k8s.io/system:metrics-server created
+rolebinding.rbac.authorization.k8s.io/metrics-server-auth-reader created
+clusterrolebinding.rbac.authorization.k8s.io/metrics-server:system:auth-delegator created
+clusterrolebinding.rbac.authorization.k8s.io/system:metrics-server created
+service/metrics-server created
+deployment.apps/metrics-server created
+apiservice.apiregistration.k8s.io/v1beta1.metrics.k8s.io created
+namespace/cf created
+namespace/korifi created
+secret/image-registry-credentials created
+Building korifi values file...
+go install sigs.k8s.io/controller-tools/cmd/controller-gen
+controller-gen object:headerFile="controllers/hack/boilerplate.go.txt" paths="./model/..."
+make[1]: Entering directory '/home/aks91/repo/korifi/controllers'
+mkdir -p bin
+go install sigs.k8s.io/controller-tools/cmd/controller-gen
+controller-gen object:headerFile="hack/boilerplate.go.txt" paths="./..."
+make[1]: Leaving directory '/home/aks91/repo/korifi/controllers'
+make[1]: Entering directory '/home/aks91/repo/korifi/job-task-runner'
+mkdir -p bin
+go install sigs.k8s.io/controller-tools/cmd/controller-gen
+controller-gen object:headerFile="hack/boilerplate.go.txt" paths="./..."
+make[1]: Leaving directory '/home/aks91/repo/korifi/job-task-runner'
+make[1]: Entering directory '/home/aks91/repo/korifi/kpack-image-builder'
+mkdir -p bin
+go install sigs.k8s.io/controller-tools/cmd/controller-gen
+controller-gen object:headerFile="hack/boilerplate.go.txt" paths="./..."
+make[1]: Leaving directory '/home/aks91/repo/korifi/kpack-image-builder'
+make[1]: Entering directory '/home/aks91/repo/korifi/statefulset-runner'
+mkdir -p bin
+go install sigs.k8s.io/controller-tools/cmd/controller-gen
+controller-gen object:headerFile="hack/boilerplate.go.txt" paths="./..."
+make[1]: Leaving directory '/home/aks91/repo/korifi/statefulset-runner'
+go run ./scripts/helmdoc/main.go > README.helm.md
+controller-gen \
+	paths="./model/..." \
+	crd \
+	output:crd:artifacts:config=helm/korifi/controllers/crds
+make[1]: Entering directory '/home/aks91/repo/korifi/api'
+mkdir -p bin
+go install sigs.k8s.io/controller-tools/cmd/controller-gen
+go install github.com/mikefarah/yq/v4@latest
+controller-gen \
+	paths=./... \
+	output:rbac:artifacts:config=../helm/korifi/api \
+	rbac:roleName=korifi-api-system-role
+yq -i 'with(.metadata | select(.namespace == "ROOT_NAMESPACE"); .namespace="{{ .Values.rootNamespace }}")' ../helm/korifi/api/role.yaml
+make[1]: Leaving directory '/home/aks91/repo/korifi/api'
+make[1]: Entering directory '/home/aks91/repo/korifi/controllers'
+go install github.com/mikefarah/yq/v4@latest
+controller-gen \
+	paths="./..." \
+	crd \
+	rbac:roleName=korifi-controllers-manager-role \
+	webhook \
+	output:crd:artifacts:config=../helm/korifi/controllers/crds \
+	output:rbac:artifacts:config=../helm/korifi/controllers \
+	output:webhook:artifacts:config=../helm/korifi/controllers
+yq -i 'with(.metadata; .annotations["cert-manager.io/inject-ca-from"]="{{ .Release.Namespace }}/korifi-controllers-serving-cert")' ../helm/korifi/controllers/manifests.yaml
+yq -i 'with(.metadata; .name="korifi-controllers-" + .name)' ../helm/korifi/controllers/manifests.yaml
+yq -i 'with(.webhooks[]; .clientConfig.service.namespace="{{ .Release.Namespace }}")' ../helm/korifi/controllers/manifests.yaml
+yq -i 'with(.webhooks[]; .clientConfig.service.name="korifi-controllers-" + .clientConfig.service.name)' ../helm/korifi/controllers/manifests.yaml
+make[1]: Leaving directory '/home/aks91/repo/korifi/controllers'
+make[1]: Entering directory '/home/aks91/repo/korifi/job-task-runner'
+controller-gen \
+	paths="./..." \
+	rbac:roleName=korifi-job-task-runner-taskworkload-manager-role \
+	output:rbac:artifacts:config=../helm/korifi/job-task-runner
+make[1]: Leaving directory '/home/aks91/repo/korifi/job-task-runner'
+make[1]: Entering directory '/home/aks91/repo/korifi/kpack-image-builder'
+go install github.com/mikefarah/yq/v4@latest
+controller-gen \
+	paths="./..." \
+	rbac:roleName=korifi-kpack-build-manager-role \
+	webhook \
+	output:rbac:artifacts:config=../helm/korifi/kpack-image-builder \
+	output:webhook:artifacts:config=../helm/korifi/kpack-image-builder
+yq -i 'with(.metadata; .annotations["cert-manager.io/inject-ca-from"]="{{ .Release.Namespace }}/korifi-kpack-image-builder-serving-cert")' ../helm/korifi/kpack-image-builder/manifests.yaml
+yq -i 'with(.metadata; .name="korifi-kpack-image-builder-" + .name)' ../helm/korifi/kpack-image-builder/manifests.yaml
+yq -i 'with(.webhooks[]; .clientConfig.service.namespace="{{ .Release.Namespace }}")' ../helm/korifi/kpack-image-builder/manifests.yaml
+yq -i 'with(.webhooks[]; .clientConfig.service.name="korifi-kpack-image-builder-" + .clientConfig.service.name)' ../helm/korifi/kpack-image-builder/manifests.yaml
+make[1]: Leaving directory '/home/aks91/repo/korifi/kpack-image-builder'
+make[1]: Entering directory '/home/aks91/repo/korifi/statefulset-runner'
+go install github.com/mikefarah/yq/v4@latest
+controller-gen \
+	paths="./..." \
+	rbac:roleName=korifi-statefulset-runner-appworkload-manager-role \
+	output:rbac:artifacts:config=../helm/korifi/statefulset-runner
+make[1]: Leaving directory '/home/aks91/repo/korifi/statefulset-runner'
